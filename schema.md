@@ -1,52 +1,41 @@
-Slack - Features
-  Live chat
-  Channels
-  Direct Message
-  Teams or multi-person DM
-  Bonus: comments/threads
-  Bonus: Search Messages
-  Bonus: Notifications
-
-
-Table name:  users
+`users`
 
 | column name     | data type | details             |
 |-----------------|-----------|---------------------|
-| id              | integer   | primary key         |
-| email           | string    | null: false, unique |
-| password_digest | string    | null: false         |
-| session_token   | string    | null: false, unique |
-| username        | string    | null: false,        |
-| display_name    | string    |                     |
-| photo_url       | string    |                     |
-| timestamps      |           |                     |
+| `id`            | integer   | primary key         |
+| `email`         | string    | not null, unique    |
+| `password_digest`| string    | not null            |
+| `session_token` | string    | not null, unique    |
+| `full_name`      | string    | not null,           |
+| `display_name`  | string    |                     |
 
-Table name:  chatrooms
+
+`chatrooms`
 
 | column name       | data type      | details            |
 |-------------------|----------------|--------------------|
-| id                | integer        | primary key        |
-| name              | string         | null:false, unique |
-| room_type/channel | string/boolean | null:false, unique |
-| timestamps        |                |                    |
+| `id`              | integer        | primary key        |
+| `name`            | string         | not null, unique   |
+| `room_type`       | string         | not null, unique   |
+| `admin_id`        | string         | not null, unique   |
 
-Table name: messages
+`messages`
 
 | column name | data type | details             |
 |-------------|-----------|---------------------|
-| id          | integer   | primary key         |
-| body        | text      | null:false          |
-| author_id   | integer   | null:false, indexed |
-| message_id  | integer   | null:false, indexed |
-| timestamps  |           |                     |
+| `id`          | integer   | primary key         |
+| `body`        | text      | not null            |
+| `author_id`   | integer   | not null, indexed   |
+| `message_id`  | integer   | not null, indexed   |
 
-Table name: chatroomUsers
+`chatroomUsers`
 
 | column name | data type | details    |
 |-------------|-----------|------------|
-| chatroom_id | integer   | null:false |
-| user_id     | integer   | null:false |
-| timestamps  |           |            |
+| `id`          | integer   | primary key         |
+| `chatroom_id` | integer   | not null   |
+| `user_id`     | integer   | not null   |
+| `timestamps`  |           |            |
 
 BONUS
 Table name: comments/threads  (can this be part of messages table? )
@@ -54,7 +43,7 @@ Table name: comments/threads  (can this be part of messages table? )
 | column name | data type | details             |
 |-------------|-----------|---------------------|
 | id          | integer   | primary key         |
-| body        | text      | null:false          |
-| author_id   | integer   | null:false, indexed |
-| message_id  | integer   | null:false, indexed |
+| body        | text      | not null            |
+| author_id   | integer   | not null, indexed   |
+| message_id  | integer   | not null, indexed   |
 | timestamps  |           |                     |
