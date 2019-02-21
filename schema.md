@@ -50,6 +50,7 @@ Table name: chatroomUsers
 
 BONUS
 Table name: comments/threads  (can this be part of messages table? )
+
 | column name | data type | details             |
 |-------------|-----------|---------------------|
 | id          | integer   | primary key         |
